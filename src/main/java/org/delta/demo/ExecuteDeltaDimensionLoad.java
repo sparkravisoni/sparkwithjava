@@ -9,10 +9,10 @@ public class ExecuteDeltaDimensionLoad {
 
         SparkSession spark = sparkCon.createSparkSession("Delta_Demo");
 
-        // Read current target data (Step 1)
+        // Step 1: Read current target data
         Dataset<Row> currentEmpDim = spark.read().parquet("src/main/target_database/emp_dim.parquet");
 
-        // Read new source data (Step 1)
+        // Step 1: Read new source data
         Dataset<Row> empSourceData = spark.read().option("dateFormat", "dd/MM/yyyy").option("delimiter", ",").option("header", "true").option("inferschema", "true").csv("src/main/resources/emp_data_jan3.csv");
 
         // Step 2: Perform Source ANTI JOIN target on key columns to get non-matching/updated keys.

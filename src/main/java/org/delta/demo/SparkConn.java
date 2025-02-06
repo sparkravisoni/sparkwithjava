@@ -1,6 +1,7 @@
 package org.delta.demo;
 
 import org.apache.spark.sql.SparkSession;
+//import org.apache.spark.sql.delta.catalog.DeltaCatalog;
 
 public class SparkConn {
     public SparkSession createDeltaSparkSession(String appName)
